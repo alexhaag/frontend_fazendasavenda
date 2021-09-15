@@ -1,0 +1,18 @@
+node_modules
+next-env.d.ts
+next.config.js
+tsconfig.json
+yarn.lock
+
+# next.js 
+/.next/
+
+# production 
+/build
+
+# local env files
+.env.local
+
+
+# vercel
+.vercel
