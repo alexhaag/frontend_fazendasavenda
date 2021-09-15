@@ -1,0 +1,48 @@
+.container{
+  height: 100%;
+  width: 100%;
+  padding: 60px 30px;
+  background-image: url('/images/body.gif');
+
+}
+  
+  .fotos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width:100%;
+
+
+    .cardsFotos {
+      height: 420px;
+      padding: 6px;
+      margin-right: 20px;
+      margin-bottom: 30px;
+      border: 1px solid var(--black-200);
+    }
+
+    .cardsDados {
+      padding: 10px 10px;
+      font-size: 1rem;
+    }
+
+    .saibamais {
+      display: block;
+      margin-top: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    
+  }
+
+
+@media(max-width: 1000px) {
+  .container {
+    .fotos {
+      justify-content: center;
+    }
+    .cardsFotos{
+     flex-direction: column;
+    }
+  }
+}

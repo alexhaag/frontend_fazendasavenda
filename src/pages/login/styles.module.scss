@@ -1,0 +1,30 @@
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--black-100);
+
+    input {
+        height: 40px;
+        width: 15rem;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    button {
+        border: 0;
+        height: 40px;
+        width: 15rem;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        background-color: var(--color-titulo);
+        color: white;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+}

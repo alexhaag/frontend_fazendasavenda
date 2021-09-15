@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.foto {
+  margin: 20px 20px 20px 0;
+  border: 2px solid rgb(190, 190, 190);
+  width: 320px;
+  text-align: right;
+  padding: 10px;
+}
+
+.bt_excluir {
+  background: red;
+  height: 46px;
+  border-radius: 10px;
+  border: 0;
+  padding: 0 16px;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,20 @@
+.containerSocial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 0px 8px;
+    margin: 30px 0;
+
+    div{
+            color: var(--color-titulo);
+            padding: 10px;
+            height: 10px;       
+            a {
+                color: var(--color-titulo);
+            }    
+       
+    }
+    
+}

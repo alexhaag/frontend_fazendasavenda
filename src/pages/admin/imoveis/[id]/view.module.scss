@@ -1,0 +1,47 @@
+.control {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px;
+}
+.label {
+  width: 150px;
+  font-weight: 700;
+  text-align: right;
+  padding:6px;
+}
+.campo {
+  height: 40px;
+  padding: 6px;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.botoes {
+  display: flex;
+  margin: 30px 0;
+  width: 100%;
+}
+
+.bt {
+  padding: 10px;
+  text-transform: uppercase;
+  width: 150px;
+  color: white;
+  text-align: center;
+  
+}
+
+.bt_editar {
+  background: rgb(29, 29, 114);
+  
+}
+
+.bt_voltar {
+  background: rgb(81, 173, 81);
+  margin-left: 10px;
+}
+
+.bt_fotos {
+  background: rgb(224, 178, 25);
+  margin-left: 10px;
+}

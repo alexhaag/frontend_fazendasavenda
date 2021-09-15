@@ -1,0 +1,42 @@
+
+.container{
+
+  display: flex;
+  justify-content:space-evenly;
+  margin-bottom: 50px;
+
+  span{
+    color: var(--black);
+  }
+
+  p {
+    font-family: 'Rambla', sans-serif;
+    margin: 0 0 30px;
+  }
+
+  .formContato {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+
+    input {
+      height:30px;
+      padding: 4px;
+      margin: 5px 0;
+    }
+    textarea {
+      padding: 4px;
+      margin: 5px 0;
+    }
+    
+    input[type="submit"]{
+      height: 50px;
+    }
+  }
+}
+
+@media(max-width: 1000px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+  --white: #FFFFFF;
+  
+  --yellow-500: #b19e3c;
+  
+  --color-azul: #2c4772;
+  --color-titulo: #2c4772;
+  --color-link: #2c4772;
+  --color-subtitulo: #888888;
+   
+  --black-50:rgb(235, 233, 233);
+  --black-100: #dadada;
+  --black-200: #adadad;
+  --black-300: #919090;
+  --black-500: #3d3b3b;
+  --black-600: #252525;
+  --black-900: #101010;
+  --black: #000000;
+
+  --font-titulo : 'Oswald';
+  --font-subtitulo : 'Rambla';
+  --font-texto : 'Rambla';
+}
+
+@media(max-width:1080px){
+  html{
+    font-size: 93.75%;
+  }
+}
+
+@media(max-width:1080px){
+  html{
+    font-size: 87.5%; //14px
+  }
+}
+
+body{
+  font-family: var(--font-texto), sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: var(--color-titulo);
+  background-color: #fff;
+}
+
+body, input, textarea, select, button{
+  font: 400 1rem var(--font-texto), sans-serif;
+}
+
+
+/* WHATSAPP FIXO */
+.whatsapp-fixo {
+  position: fixed;
+  bottom:0px;
+  left:10px;
+  z-index: 999;
+  }
+
+button{
+  cursor: pointer;
+}
+
+a {
+  color: var(--black-900);
+  text-decoration: none;
+  transition: 0.5s;
+
+  &:hover:active:focus {
+    color: var(--black-900);
+    outline: none;
+  }
+
+}
+
+p {
+
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: var(--color-titulo);
+  margin: 0 0 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.titulo {
+  font-family: var(--font-titulo), sans-serif;
+  font-size: 2rem;
+  color: var(--color-titulo);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.subtitulo {
+  display: block;
+  font-family: var(--font-titulo), sans-serif;
+  color: var(--color-subtitulo);
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  text-transform: uppercase;  
+  font-weight: 400;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 60px 30px;
+  background-image: url('../../public/images/body.gif');
+}
+
+.fotos {
+  display: flex;
+  flex-wrap: wrap;
+
+  .cardsFotos {
+    height: 380px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--black-200);
+  }
+
+  .cardsDados {
+    padding: 10px 10px;
+    font-size: 1rem;
+  }
+
+  .saibamais {
+    display: block;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+}
+.semFoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  width: 280px;
+}

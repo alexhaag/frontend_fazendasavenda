@@ -1,0 +1,41 @@
+
+.dados_imovel {
+  margin: 20px 0;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.foto {
+  position: relative;
+  margin: 10px 20px 10px 0;
+  width: 280px;
+}
+
+.imgCover {
+  background-image: cover;
+}
+
+.bt {
+  position:absolute;
+  bottom:15px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  color: white;
+  padding: 6px;
+  border-radius: 50%;
+  z-index:2;
+}
+
+.bt_excluir {
+  background-color: red;
+}
+
+.bt_upload {
+  background-color: var(--color-botao-azul);
+}
+

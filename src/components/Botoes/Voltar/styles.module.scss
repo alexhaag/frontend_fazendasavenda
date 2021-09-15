@@ -1,0 +1,23 @@
+.container {
+ margin: 20px 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .texto {
+    display: block;
+    font-family: var(--font-titulo), sans-serif;
+    color: var(--color-subtitulo);
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;  
+    font-weight: 400;
+    margin-left: 10px;
+  }
+
+
+}

@@ -1,0 +1,54 @@
+  .content {
+    display: flex;
+    width: 320px;
+
+    .fieldControl {
+      display: flex;
+      margin-bottom: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .label {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      width: 110px;
+      text-align: right; 
+    }
+    .field {
+      height: 40px;
+    }
+
+    span {
+      font-size: 2rem;
+    }
+    
+    textarea {
+      border: 0;
+      padding:6px;
+    }
+
+    select {
+      border:0;
+      height: 40px;
+      width: 170px;
+      font-size: 1.2rem;
+    }
+  
+    input {
+      border:0;
+      height: 40px;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      padding: 6px;
+    }
+    button {
+      margin-top: 15px;
+      border: 0;
+      height: 40px;
+      width: 180px;
+      background-color: var(--color-azul);
+      color: white;
+      font-weight: bold;
+    }
+  }

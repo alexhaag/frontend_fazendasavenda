@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+}
+.content{
+  margin-top: 2rem;
+  
+  table {
+    max-width: 750px;
+    width: 100%;
+  }
+  table tr td {
+    height: 2.2rem;
+    font-size: 1.2rem;
+  }
+  form {
+    margin: 20px 0;
+  }
+  select {
+    font-size: 1.5rem;
+    padding: 6px;
+  }
+  .btInserir {
+    padding: 6px;
+    background-color: blue;
+    color: white;
+    a{
+      height: 3rem;
+      width: 100px;
+    }
+  }
+  .menu {
+    height: 50px;
+    text-align: right;
+    border: 2px solid red;
+  }
+}
