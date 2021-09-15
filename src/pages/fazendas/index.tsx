@@ -51,7 +51,7 @@ function Fazendas({ imoveis }: ImoveisProps) {
                     Preço: {imovel.preco}<br />
 
                     <span className={styles.saibamais}>
-                      <Link href={`/fazendas/area/${imovel.id}`}>
+                      <Link href={`/fazendas/${imovel.id}/view`}>
                         <a>saiba mais</a>
                       </Link>
                     </span>
