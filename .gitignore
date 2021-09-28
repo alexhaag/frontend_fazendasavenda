@@ -13,7 +13,6 @@ storage.rules
 /functions
 
 # next.js 
-next.config.js
 next-env.d.ts
 /.next/
 
