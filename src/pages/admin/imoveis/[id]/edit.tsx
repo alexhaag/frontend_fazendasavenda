@@ -1,15 +1,17 @@
-
 import { GetServerSideProps } from 'next';
 import { db } from '../../../../services/firebase';
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
+import Permissao from '../../../../components/Permissao';
 import { FormEvent, useState } from 'react';
 import BotaoVoltar from '../../../../components/Botoes/Voltar';
 
 import styles from './edit.module.scss';
 
 function EditImovel({ id }) {
+
   const router = useRouter();
+
   const [codigo, setCodigo] = useState();
   const [tipo, setTipo] = useState('');
   const [area, setArea] = useState(0);
@@ -65,8 +67,9 @@ function EditImovel({ id }) {
   }, [])
 
   return (
-    <div className="container">
 
+    <div className="container">
+      <Permissao />
       <BotaoVoltar referencia={`/admin/imoveis/${id}/view`} />
 
       <div className="titulo">

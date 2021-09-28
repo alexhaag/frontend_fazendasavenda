@@ -4,7 +4,7 @@ import { db } from "../../../services/firebase";
 import { Imoveis } from '../../../dtos/Imovel';
 import Galeria from '../../../components/Galeria';
 import BotaoVoltar from "../../../components/Botoes/Voltar";
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 
 interface ImovelProps {
   imovel?: Imoveis;
@@ -13,40 +13,36 @@ interface ImovelProps {
 export default function FazendaView({ imovel }: ImovelProps) {
 
   return (
-    <>
-      <div className="container">
-        <BotaoVoltar referencia={"/fazendas"} />
-        <h1 className="titulo">Fazenda - Código: {imovel?.codigo}</h1>
-        <div className={styles.content}>
-          <div>
-            <aside className={styles.aside}>
-              <h2 className={styles.titulo}>Descrição:</h2>
-              <div><b>Área: </b>{imovel?.area}</div>
-              <div><b>Cidade: </b>{imovel?.cidade} - {imovel?.uf}</div>
-              <div><b>Preço: </b>{imovel?.preco}</div>
-              <div><b>Moeda: </b>{imovel?.moeda}</div>
-              <div><b>Observações: </b><br />{imovel?.obs}</div>
-              <div className={styles.contato}>
-                <div><b><u>Contato: </u></b></div>
-                <div className={styles.whatsapp}>
-                  <a href="https://wa.me/5551999790578">
-                    <b>WhatsApp: </b>
-                    +55 51 99979-0578
-                  </a>
-                </div>
-                <div>
-                  <b>E-Mail: </b>
-                  <a href="mailto:araujo@fazendasavenda.com.br">
-                    araujo@fazendasavenda.com.br
-                  </a>
-                </div>
-              </div>
-            </aside>
+    <div className={styles.container}>
+      <BotaoVoltar referencia={"/fazendas"} />
+      <h1 className="titulo">Fazenda - Código: {imovel?.codigo}</h1>
+      <div className={styles.content}>
+        <aside className={styles.aside}>
+          <h2 className={styles.titulo}>Descrição:</h2>
+          <div><b>Área: </b>{imovel?.area}</div>
+          <div><b>Cidade: </b>{imovel?.cidade} - {imovel?.uf}</div>
+          <div><b>Preço: </b>{imovel?.preco}</div>
+          <div><b>Moeda: </b>{imovel?.moeda}</div>
+          <div><b>Observações: </b><br />{imovel?.obs}</div>
+          <div className={styles.contato}>
+            <div><b><u>Contato: </u></b></div>
+            <div className={styles.whatsapp}>
+              <a href="https://wa.me/5551999790578">
+                <b>WhatsApp: </b>
+                +55 51 99979-0578
+              </a>
+            </div>
+            <div>
+              <b>E-Mail: </b>
+              <a href="mailto:araujo@fazendasavenda.com.br">
+                araujo@fazendasavenda.com.br
+              </a>
+            </div>
           </div>
-          <Galeria imagens={imovel?.fotos} />
-        </div>
+        </aside>
       </div>
-    </>
+      <Galeria imagens={imovel?.fotos} />
+    </div>
   );
 
 }

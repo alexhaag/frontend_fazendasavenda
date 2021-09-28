@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { storage, db, auth } from '../../../../services/firebase';
+import useAuth from '../../../../hooks/useAuth';
+
 import Link from 'next/link';
 import styles from './fotos.module.scss';
 
 function Upload({ imovel }) {
+  const { user } = useAuth();
   const [fotos, setFotos] = useState([]);
   const id = imovel.id;
 

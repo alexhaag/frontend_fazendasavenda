@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
-import { db } from '../../../services/firebase';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+import { db } from '../../../services/firebase';
+
+import Permissao from '../../../components/Permissao';
 import { Imoveis } from '../../../dtos/Imovel';
 import BotaoIncluir from '../../../components/Botoes/Incluir';
 import styles from './styles.module.scss';
@@ -9,12 +13,17 @@ interface ImoveisProps {
   imoveis?: Imoveis[];
 }
 
+
+
 function IndexAdmin() {
+  const router = useRouter()
+
   const [imoveis, setImoveis] = useState([]);
   const [tipoSelect, setTipoSelect] = useState('Fazenda');
 
   useEffect(() => {
     db.collection('imoveis')
+      .orderBy('codigo', 'desc')
       .where("tipo", "==", tipoSelect)
       .onSnapshot(
         (snapshot) => setImoveis(
@@ -29,10 +38,15 @@ function IndexAdmin() {
   }, [tipoSelect]);
 
   return (
+
     <div className={styles.container}>
+      <Permissao />
+
       <BotaoIncluir refer="/admin/imoveis/formulario" />
       <h1>Administração das fazendas</h1>
+
       <div className={styles.content}>
+
         <form>
           <label>LISTAR: </label>
           <select value={tipoSelect} onChange={e => setTipoSelect(e.target.value)}>
@@ -72,12 +86,15 @@ function IndexAdmin() {
           </tbody>
         </table>
       </div>
+
+
     </div>
-  );
+  )
 }
 
+
 /*
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
 
   const dbRef = db.collection('imoveis')
     .orderBy('codigo', 'desc')

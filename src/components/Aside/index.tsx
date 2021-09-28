@@ -1,6 +1,6 @@
 
-import { useState, useContext, FormEvent } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useState, FormEvent } from 'react';
+import useAuth from '../../hooks/useAuth';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import Logo from '../Logo';
@@ -14,7 +14,7 @@ import { FaBars, FaWhatsapp } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
 export default function Aside() {
-  const { isAuthenticated, signOut } = useContext(AuthContext);
+  const { user, signOut } = useAuth();
   const [onMenu, setOnMenu] = useState(true);
 
   async function handleSignOut(event: FormEvent) {
@@ -73,14 +73,19 @@ export default function Aside() {
               })
             }
             <li>
-              {
-                isAuthenticated ?
-                  (<Link href="#">
-                    <a onClick={handleSignOut}>lOGOUT</a>
-                  </Link>)
-                  : (<Link href="/login">ADMINISTRAÇÃO</Link>)
-              }
+              <Link href="/admin">ADMINISTRAÇÃO</Link>
             </li>
+
+            {
+              user ?
+                (
+                  <li>
+                    <Link href="#">
+                      <a onClick={handleSignOut}>lOGOUT</a>
+                    </Link>
+                  </li>
+                ) : ''
+            }
           </ul>
           <RedesSociais />
           <Empresas />

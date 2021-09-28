@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
-import 'firebase/analytics';
+// import 'firebase/analytics';
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -12,13 +12,13 @@ if (!firebase.apps.length) {
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
   });
 }
 
 const db = firebase.firestore();
 const auth = firebase.auth();
 const storage = firebase.storage();
+// const analytics = firebase.analytics();
 
-export { firebase, auth, db, storage };
+export { auth, db, storage };
 

@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { db, storage } from '../../../../services/firebase';
 import { Imoveis } from '../../../../dtos/Imovel';
 import { FaTrash } from "react-icons/fa";
 import BotaoVoltar from '../../../../components/Botoes/Voltar';
 import Image from 'next/image';
 import styles from './fotos.module.scss';
+import Permissao from '../../../../components/Permissao';
 
 interface ImovelDTO {
   imovel?: Imoveis;
 }
 
 function Upload({ imovel }: ImovelDTO) {
+
   const id = imovel.id;
   const [fotos, setFotos] = useState(imovel.fotos);
 
@@ -61,8 +63,8 @@ function Upload({ imovel }: ImovelDTO) {
   }
 
   return (
-
     <div className="container">
+      <Permissao />
       <div className={styles.content}>
 
         <BotaoVoltar referencia={`/admin/imoveis/${id}/view`} />
@@ -111,8 +113,8 @@ function Upload({ imovel }: ImovelDTO) {
 
       </div>
     </div>
-
   )
+
 }
 
 export const getServerSideProps = async (ctx) => {

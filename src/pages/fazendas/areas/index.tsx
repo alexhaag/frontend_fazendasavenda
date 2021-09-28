@@ -41,7 +41,7 @@ function Areas({ imoveis }: ImoveisProps) {
 
                   <div className={styles.cardsFotos} key={index}>
                     {
-                      imovel.fotos.length > 0
+                      imovel.fotos
                         ? (
                           <Image
                             src={imovel.fotos[0].url}

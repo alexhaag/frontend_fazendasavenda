@@ -75,7 +75,7 @@ function Arrendamentos({ imoveis }: ImoveisProps) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const dbRef = db.collection("imoveis")
-    .where("tipo", "==", "Sitio")
+    .where("tipo", "==", "Sítio")
 
   const data = await dbRef.get();
 

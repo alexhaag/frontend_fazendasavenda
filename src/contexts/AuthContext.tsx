@@ -1,9 +1,15 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Router from 'next/router';
+import cookie from 'js-cookie';
 import { auth } from '../services/firebase'
 
+
 type User = {
-  email: string;
+  uid: string,
+  email: string,
+  displayName?: string,
+  refreshToken: string,
+  photoURL: string,
 };
 
 type SignInCredentials = {
@@ -12,77 +18,87 @@ type SignInCredentials = {
 }
 
 type AuthContextData = {
+  user: User;
+  loading: boolean;
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => void;
-  user: User;
-  isAuthenticated: boolean;
 }
 
-type AuthProviderProps = {
-  children: ReactNode;
-}
+const AuthContext = createContext({} as AuthContextData);
 
-export const AuthContext = createContext({} as AuthContextData);
+const formatUser = async (user: User) => ({
+  uid: user.uid,
+  email: user.email,
+  displayName: user.displayName,
+  refreshToken: user.refreshToken,
+  photoURL: user.photoURL,
+})
 
-let authChannel: BroadcastChannel
+export function AuthProvider({ children }) {
 
-export function signOut() {
-  auth.signOut()
-    .then(() => {
-      alert('desconectou');
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const handleUser = async (currentUser: User) => {
+    if (currentUser) {
+      const formatedUser = await formatUser(currentUser);
+      setUser(formatedUser.email)
+      setSession(true);
+      return formatedUser.email;
     }
-    )
-    .catch((error) => alert(error));
-  Router.push('/');
-}
+    setUser(false);
+    setSession(false);
+    return false;
+  }
 
-export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const isAuthenticated = !!user;
-
-  useEffect(() => {
-
-    authChannel = new BroadcastChannel('auth');
-
-    authChannel.onmessage = (message) => {
-      switch (message.data) {
-        case 'signOut':
-          signOut();
-          break;
-        default:
-          break;
-      }
+  const setSession = (session) => {
+    if (session) {
+      cookie.set('batistaaraujo-auth', session, { expires: 1, });
+    } else {
+      cookie.remove('batistaaraujo-auth');
     }
-  }, []);
+  }
 
   async function signIn({ email, password }: SignInCredentials) {
 
     try {
+      setLoading(true);
+      const response = await auth.signInWithEmailAndPassword(email, password);
+      console.log('response ----------> ', response)
+      handleUser(response.user);
+      Router.push('/admin/imoveis');
 
-      return auth.signInWithEmailAndPassword(email, password)
-        .then((result) => {
-          setUser({ email });
-          Router.push('/admin/imoveis');
-        })
-        .catch((error) => {
-          console.log(error.code);
-          console.log(error.message);
-        });
+    } finally {
 
+      setLoading(false);
 
-    } catch (error) {
-      console.log('------> ', error.message)
     }
   }
 
-  return (
-    <AuthContext.Provider value={{
-      user,
-      signIn,
-      signOut,
-      isAuthenticated,
-    }}>
-      {children}
-    </AuthContext.Provider>
-  )
+  async function signOut() {
+
+    try {
+      await auth.signOut()
+      handleUser(null);
+      Router.push('/');
+    } finally { setLoading(false) };
+
+  }
+
+  useEffect(() => {
+    const unsubscribe = auth.onIdTokenChanged(handleUser);
+    return () => unsubscribe();
+  }, [])
+
+  return <AuthContext.Provider value={{
+    user,
+    loading,
+    signIn,
+    signOut
+  }}>{children}</AuthContext.Provider>
+
 }
+
+// export const AuthConsumer = AuthContext.Consumer;
+
+export default AuthContext;

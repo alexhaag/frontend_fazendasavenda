@@ -1,10 +1,20 @@
 node_modules
-next-env.d.ts
-next.config.js
 tsconfig.json
 yarn.lock
 
+#firebase
+.firebaserc
+firebase.jsonwebtoken
+firestore.indexes.jsonwebtoken
+firestore.rules
+storage.rules
+
+#function firebase
+/functions
+
 # next.js 
+next.config.js
+next-env.d.ts
 /.next/
 
 # production 

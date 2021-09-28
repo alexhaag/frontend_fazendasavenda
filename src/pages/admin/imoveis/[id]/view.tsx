@@ -6,6 +6,7 @@ import { Imoveis } from "../../../../dtos/Imovel";
 import Galeria from "../../../../components/Galeria"
 import BotaoIncluir from '../../../../components/Botoes/Incluir';
 import BotaoVoltar from '../../../../components/Botoes/Voltar';
+import Permissao from "../../../../components/Permissao";
 
 interface ImovelDTO {
   imovel?: Imoveis;
@@ -15,6 +16,7 @@ function FazendaView({ imovel }: ImovelDTO) {
 
   return (
     <div className="container">
+      <Permissao />
       <BotaoIncluir refer="/admin/imoveis/formulario" />
       <BotaoVoltar referencia={`/admin/imoveis`} />
       <h1 className="titulo">Setor de Administração</h1>

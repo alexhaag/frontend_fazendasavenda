@@ -1,11 +1,13 @@
 
 import { GetServerSideProps } from 'next';
+import Permissao from '../../../../components/Permissao'
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { db } from '../../../../services/firebase';
 import BotaoVoltar from '../../../../components/Botoes/Voltar';
 import { Imoveis } from '../../../../dtos/Imovel';
 import styles from './styles.module.scss';
+
 
 
 export default function Formulario({ indice }) {
@@ -57,7 +59,7 @@ export default function Formulario({ indice }) {
 
   return (
     <div className="container">
-
+      <Permissao />
       <BotaoVoltar referencia={`/admin/imoveis/`} />
 
       <div className="titulo">

@@ -1,14 +1,17 @@
 import { FormEvent, useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-
+import useAuth from '../../hooks/useAuth';
+import { useRouter } from 'next/router'
 import styles from './styles.module.scss';
 
 export default function Login() {
-
+  const { user, signIn, signOut } = useAuth();
+  const router = useRouter();
+  if (user) {
+    router.replace('/admin/imoveis')
+  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signIn, signOut } = useContext(AuthContext);
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -27,7 +30,7 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
-
+      {user}
       <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
       <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       <button type="submit">Entrar</button>
